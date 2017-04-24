@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->integer('menu_id')->unsigned()->index();
             $table->integer('quantity')->default(0);
+            $table->time('total_time');
             $table->boolean('status')->default(false);
             $table->timestamps();
 

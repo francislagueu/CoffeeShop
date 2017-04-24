@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->string('name')->unique();
             $table->integer('size')->default(0);
             $table->float('price')->default(0);
+            $table->time('process');
             $table->timestamps();
         });
     }
