@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+Route::group(['middleware'=>'auth'], function(){
+		Route::post('/login/custom', [
+				'uses'=>'LoginController@login',
+				'as'=>'login.custom'
+			]);
+});

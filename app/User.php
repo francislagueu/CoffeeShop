@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Order;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function is_admin(){
+        if(Auth::user()->admin){
+            return true;
+        }
+        return false;
+    }
+
+    public function orders(){
+        $this->hasMany(Order::class);
+    }
 }
