@@ -7,7 +7,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+
+                @if($status = Session::get('status'));
+                    <div class="alert alert-info">
+                        {{$status}}
+                    </div>
+                @endif
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login.custom') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

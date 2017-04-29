@@ -17,10 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-Route::group(['middleware'=>'auth'], function(){
-		Route::post('/login/custom', [
+Route::post('/login/custom', [
 				'uses'=>'LoginController@login',
 				'as'=>'login.custom'
 			]);
+
+Route::get('/users/confirmation/{id}','Auth\RegisterController@confirmation')->name('confiramtion');
+Route::group(['middleware'=>'auth'], function(){
+		Route::get('/home', 'HomeController@index')->name('home');
+		Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 });

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'confirmed',
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function is_admin(){
-        if(Auth::user()->admin){
+        if($this->admin){
             return true;
         }
         return false;
