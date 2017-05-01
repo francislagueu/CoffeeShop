@@ -22,7 +22,7 @@ Route::post('/login/custom', [
 				'as'=>'login.custom'
 			]);
 
-Route::get('/users/confirmation/{id}','Auth\RegisterController@confirmation')->name('confiramtion');
+Route::get('/users/confirmation/{id}','Auth\RegisterController@confirmation')->name('confirmation');
 Route::group(['middleware'=>'auth'], function(){
 		Route::get('/home', 'HomeController@index')->name('home');
 		Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

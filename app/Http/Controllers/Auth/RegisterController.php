@@ -88,7 +88,7 @@ class RegisterController extends Controller
             });
             return redirect(route('login'))->with('status', 'Confirmation email has been sent to you. Please check your email.');
         }
-        return redirect(route('route'))->with('status', $validator->errors);
+        return redirect(route('login'))->with('status', $validator->errors()->toArray());
      }
      public function confirmation($token){
          $user = User::where('token', $token)->first();
