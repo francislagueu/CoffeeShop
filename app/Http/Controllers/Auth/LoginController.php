@@ -36,4 +36,12 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+     protected function attemptLogin($request){
+         return $this->guard()->attempt([
+             'email'=>$request->email,
+             'password'=>$request->password,
+             'is_confirmed'=>1
+         ], $request->has('remember'));
+     }
 }

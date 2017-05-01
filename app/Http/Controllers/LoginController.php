@@ -11,7 +11,8 @@ class LoginController extends Controller
     public function login(Request $request){
     	if(Auth::attempt([
             'email'=>$request->email,
-            'password'=>$request->password
+            'password'=>$request->password,
+            'confirmed'=>1
         ])){
             $user = User::where('email', $request->email)->first();
             if($user->is_admin()){
@@ -21,4 +22,6 @@ class LoginController extends Controller
         }
         return redirect()->back();
     }
+
+   
 }
