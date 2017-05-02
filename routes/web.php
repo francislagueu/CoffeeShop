@@ -29,4 +29,5 @@ Route::get('/users/confirmation/{id}','Auth\RegisterController@confirmation')->n
 Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']], function(){		
 		Route::get('/dashboard', 'DashboardController@index')->name('admin.index');
 		Route::resource('menu', 'MenuController');
+		Route::resource('user', 'UserController');
 });
