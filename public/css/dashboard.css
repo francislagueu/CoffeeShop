@@ -1,0 +1,7 @@
+.side, .main{
+    display: block;
+    border-style: groove;
+    border-radius: 5px;
+    box-shadow: 2;
+    background: white;
+}
