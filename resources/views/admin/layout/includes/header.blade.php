@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-md-5">
                 <!-- Logo -->
-                <div class="logo">
-                    <h1><a href="{{route('admin.index')}}">Admin</a></h1>
+                <div class="logo navbar-brand">
+                    <h1><a href="{{route('admin.index')}}">Admin Panel</a></h1>
                 </div>
             </div>
 
