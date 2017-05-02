@@ -1,25 +1,37 @@
 @extends('admin.layout.admin');
 @section('content');
     <h3>Menus</h3>
-    <ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Process time</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
         @forelse($menus as $menu)
-        <li>
-            <h4>Name of menu: {{$menu->name}}</h4>
-            <h4>Size: {{ $menu->size }}</h4>
-            <h4>Price: {{ $menu->price }}
-            <form action="{{ route('product.edit', $menu->id)}}" method"POST">
+        <tr>
+            <td>{{ $menu->name }}</td>
+            <td>{{ $menu->size }}</td>
+            <td>{{ $menu->price }}</td>
+            <td>{{ $menu->process }}</td>
+            <td><form action="{{ route('menu.edit', $menu->id)}}" method"POST">
                 {{csrf_field()}}
                 {{method_field('UPDATE')}}
                 <input type="submit" class="btn btn-sm btn-success" value="Edit">
-            </form>
-              <form action="{{ route('product.destroy', $menu->id)}}" method"POST">
+            </form></td>
+              <td><form action="{{ route('menu.destroy', $menu->id)}}" method"POST">
                 {{csrf_field()}}
                 {{method_field('DELETE')}}
                 <input type="submit" class="btn btn-sm btn-danger" value="Delete">
-            </form>
-        </li>
+            </form></td>
+        </tr>
+        </tbody>
         @empty
         <h3>No Menus</h3>
         @endforelse
-    </ul>
+    </table>
 @endsection
