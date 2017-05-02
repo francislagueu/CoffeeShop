@@ -16,7 +16,7 @@ class LoginController extends Controller
         ])){
             $user = User::where('email', $request->email)->first();
             if($user->is_admin()){
-                return redirect()->route('dasboard');
+                return redirect()->route('admin.index');
             }
             return redirect()->route('home');
         }

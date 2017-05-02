@@ -17,13 +17,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::post('/login/custom', [
 				'uses'=>'LoginController@login',
 				'as'=>'login.custom'
 			]);
 
 Route::get('/users/confirmation/{id}','Auth\RegisterController@confirmation')->name('confirmation');
-Route::group(['middleware'=>'auth'], function(){
-		Route::get('/home', 'HomeController@index')->name('home');
-		Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']], function(){		
+		Route::get('/dashboard', 'DashboardController@index')->name('admin.index');
+		Route::resource('menu', 'MenuController');
 });
