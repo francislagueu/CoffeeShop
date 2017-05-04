@@ -1,5 +1,7 @@
 @extends('admin.layout.admin')
 @section('content')
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
     <h3>Users</h3>
     <table class="table table-striped">
         <thead>
@@ -33,4 +35,6 @@
         <h3>No Users</h3>
         @endforelse
     </table>
+    </div>
+    </div>
 @endsection

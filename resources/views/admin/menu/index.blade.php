@@ -1,5 +1,7 @@
-@extends('admin.layout.admin');
-@section('content');
+@extends('admin.layout.admin')
+@section('content')
+    <div class="row">
+    <div class="col-md-8 col-md-offset-2">
     <h3>Menus</h3>
     <table class="table table-striped">
         <thead>
@@ -34,4 +36,6 @@
         <h3>No Menus</h3>
         @endforelse
     </table>
+    </div>
+    </div>
 @endsection
