@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label('process', 'Process Time') }}
-                {{ Form::time('process', null, array('class'=>'form-control')) }}
+                {{ Form::number('process', null, array('class'=>'form-control')) }}
             </div>
             <div class="form-group">
                 {{ Form::submit('Create',  array('class'=>'btn btn-primary btn-lg')) }}

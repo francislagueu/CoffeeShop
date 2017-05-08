@@ -20,7 +20,7 @@ class CreateMenusTable extends Migration
             $table->float('price')->default(0);
             $table->string('image')->nullable();
             $table->text('description');
-            $table->time('process');
+            $table->integer('process');
             $table->timestamps();
         });
     }

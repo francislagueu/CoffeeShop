@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cart;
 use App\Menu;
+use Session;
+use App\Http\Requests;
 
 class MenuController extends Controller
 {
@@ -99,5 +102,29 @@ class MenuController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getCartItem(Request $request, $id){
+        $menu = Menu::find($id);
+        $oldCart = Session::has('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->addItemsToCart($menu, $menu->id);
+
+        $request->session()->put('cart', $cart);
+        return redirect()->route('shop.index');
+    }
+
+    public function getItemFromCart(){
+        if(!Session::has('cart')){
+            return view('shop.cart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('shop.cart', ['menus'=>$cart->menuItems, 'totalPrice'=>$cart->totalPrice]);
+    }
+
+    public function display(){
+        $menus = Menu::all();
+        return view('shop.index', compact('menus'));
     }
 }
