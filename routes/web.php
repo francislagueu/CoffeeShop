@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/add-to-cart/{id}', 'MenuController@getCartItem')->name('menu.addItemToCart');
+Route::get('/cart', 'MenuController@getItemFromCart')->name('menu.cart');
+
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');

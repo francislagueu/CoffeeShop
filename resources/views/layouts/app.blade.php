@@ -58,7 +58,12 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="#">Cart</a></li>
+                            <li>
+                                <a href="{{route('menu.cart')}}">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart
+                                    <span class="badge">{{Session::has('cart')?Session::get('cart')->totalQty : ''}}</span>
+                                </a>
+                            </li>
                             <li><a href="#">Profile</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
