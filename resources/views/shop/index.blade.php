@@ -1,6 +1,7 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('title')
+    Shop Here
 @endsection
 @section('content')
     @foreach($menus->chunk(3) as $menuChunk)
