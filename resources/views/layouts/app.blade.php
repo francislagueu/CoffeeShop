@@ -49,8 +49,8 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contacts</a></li>
+                        <li><a href="{{route('About.index')}}">About</a></li>
+                        <li><a href="{{route('Contact')}}">Contacts</a></li>
                         <!-- Authentication Links -->
 
                         @if (Auth::guest())
@@ -64,7 +64,7 @@
                                     <span class="badge">{{Session::has('cart')?Session::get('cart')->totalQty : ''}}</span>
                                 </a>
                             </li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{ route('Profile.index')}}">Profile</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -89,7 +89,11 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('message'))
+        <div class="alert alert-info">
+            {{Session::get('message')}}
+        </div>
+        @endif
         @yield('content')
     </div>
 

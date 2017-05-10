@@ -35,3 +35,12 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']], function(){
 		Route::resource('menu', 'MenuController');
 		Route::resource('user', 'UserController');
 });
+Route::resource('About', 'AboutController');
+
+Route::resource('Profile', 'ProfileController');
+
+
+Route::get('Contact', 
+  ['as' => 'Contact', 'uses' => 'ContactController@create']);
+Route::post('Contact', 
+  ['as' => 'contact_store', 'uses' => 'ContactController@store']);

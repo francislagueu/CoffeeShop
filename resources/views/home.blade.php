@@ -13,20 +13,20 @@
                     <div class="item active">
                         <img src="{{url('images', 'carousel1.jpeg')}}" alt="" class="tales img-responsive">
                         <div class="carousel-caption">
-                            <h2></h2>
+                            <h2>Flavour of South America Coffee</h2>
                         </div>
                     </div>
 
                     <div class="item">
                         <img src="{{url('images', 'carousel2.jpg')}}" alt="" class="tales img-responsive">
                         <div class="carousel-caption">
-                            <h2></h2>
+                            <h2>African Caramel Coffee</h2>
                         </div>
                     </div>
                     <div class="item">
                         <img src="{{url('images', 'carousel3.jpg')}}" alt="">
                         <div class="carousel-caption">
-                            <h2></h2>
+                            <h2>Colombian Coffee</h2>
                         </div>
                     </div>
                 </div>
@@ -50,6 +50,8 @@
                         <div class="caption">
                             <h3>{{$menu->name}}</h3>
                             <p class="description">{{ $menu->description}}</p>
+                            <br>
+                            <p>Process Time: {{$menu->process}} min</p>
                             <div class="clearfix">
                                 <div class="pull-left price">${{ $menu->price}}</div>
                                 <a href="{{ route('menu.addItemToCart',['id'=>$menu->id])}}" class="btn btn-success pull-right" role="button">Add to Cart</a>

@@ -13,6 +13,8 @@
                         <div class="caption">
                             <h3>{{$menu->name}}</h3>
                             <p class="description">{{ $menu->description}}</p>
+                            <br>
+                            <p>Process Time: {{$menu->process}} min</p>
                             <div class="clearfix">
                                 <div class="pull-left price">${{ $menu->price}}</div>
                                 <a href="{{ route('menu.addItemToCart',['id'=>$menu->id])}}" class="btn btn-success pull-right" role="button">Add to Cart</a>
