@@ -11,17 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('/add-to-cart/{id}', 'MenuController@getCartItem')->name('menu.addItemToCart');
 Route::get('/cart', 'MenuController@getItemFromCart')->name('menu.cart');
+Route::get('/Shop', 'MenuController@display')->name('shop.index');
 
 Auth::routes();
 
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::post('/login/custom', [
 				'uses'=>'LoginController@login',
