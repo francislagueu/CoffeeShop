@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
 
     <!-- Scripts -->
     <script>
@@ -19,6 +20,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -96,8 +98,72 @@
         @endif
         @yield('content')
     </div>
+    <footer>
+        <p class="text-center">Arabica Coffee Copyright &copy; 2017</p>
+    </footer>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        window.sr = ScrollReveal(){
+            sr.reveal('.navbar',{
+                duration:2000,
+                origin:'bottom'
+            });
+            sr.reveal('.showcase-left', {
+                duration:2000,
+                origin:'top',
+                distance:'300px'
+            });
+             sr.reveal('.showcase-right', {
+                duration:2000,
+                origin:'top',
+                distance:'300px'
+            });
+             sr.reveal('.showcase-btn', {
+                duration:2000,
+                origin:'bottom',
+                delay:2000
+            });
+             sr.reveal('#testimonial div', {
+                duration:2000,
+                origin:'bottom'
+            });
+             sr.reveal('.info-left', {
+                duration:2000,
+                origin:'left',
+                distance:'300px'
+                viewFactor:0.2
+            });
+             sr.reveal('.info-right', {
+                duration:2000,
+                origin:'right',
+                distance:'300px'
+                viewFactor:0.2
+            });
+        }
+    </script>
+    <script>
+    $(function(){
+        $('a[href*="#"]:not([href="#")').click(function(){
+            if(location.pathname.replace(/^\//,'')==this.pathname.replace(/^\//,'')&&
+            location.hostname==this.hostname){
+                var target = $(this.hash);
+                target = target.length ? target:$('[name='+ this.hash.slice(1)+']');
+                if(target.length){
+                    $('html, body').animate({
+                        scrollTop:target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
 </body>
 </html>
