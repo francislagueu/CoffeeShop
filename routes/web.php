@@ -18,6 +18,14 @@
 Route::get('/add-to-cart/{id}', 'MenuController@getCartItem')->name('menu.addItemToCart');
 Route::get('/cart', 'MenuController@getItemFromCart')->name('menu.cart');
 Route::get('/Shop', 'MenuController@display')->name('shop.index');
+Route::get('/checkout', [
+	'uses'=>'MenuController@getCheckout',
+	'as'=>'checkout'
+]);
+Route::post('/checkout',[
+	'uses'=>'MenuController@postCheckout',
+	'as'=>'checkout'
+]);
 
 Auth::routes();
 

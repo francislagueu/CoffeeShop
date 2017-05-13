@@ -1,0 +1,1 @@
+Stripe.setPublishableKey('pk_test_ctq7i77ZmszEdr0UTO3pqOc1');
