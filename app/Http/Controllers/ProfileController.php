@@ -8,17 +8,20 @@ use Image;
 use App\User;
 use App\Http\Requests;
 
+use Illuminate\Support\Collection;
+
 class ProfileController extends Controller
 {
     public function index() 
     {
     	$user = Auth::user();
-        $orders = Auth::user()->orders();
+        $orders = $user->orders;
+       
         $orders->transform(function($order, $key){
             $order->cart = unserialize($order->cart);
             return $order;
         });
-    	return view('Profile.index', compact('user', 'orders'));
+    	return view('Profile.index', ['user'=>$user, 'orders'=>$orders]);
     }
 
     public function upload(){

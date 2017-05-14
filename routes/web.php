@@ -45,8 +45,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']], function(){
 });
 Route::resource('About', 'AboutController');
 
+Route::get('Profile/Edit', 'ProfileController@edit');
+Route::get('Profile/upload', 'ProfileController@upload');
 Route::resource('Profile', 'ProfileController');
-
+Route::post('Profile', 'ProfileController@update');
+Route::post('Profile/upload', 'ProfileController@update_avatar');
 
 Route::get('Contact', 
   ['as' => 'Contact', 'uses' => 'ContactController@create']);

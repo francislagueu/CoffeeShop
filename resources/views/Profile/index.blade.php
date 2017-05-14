@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <img src="/uploads/avatars/default-avatar.jpg{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 25px;"><br />
+  <div class="col-md-6">
+    <img src="/uploads/avatars/{{ $user->profile_picture }}" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 25px;"><br />
     <p>{{ $user->name }}<br />
     {{ $user->email }}<br />
     {{ $user->address }}<br />
@@ -21,7 +21,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <ul class="list-group">
-            @foreach($order->cart->items as $item)
+            @foreach($order->cart->menuItems as $item)
               <li class="list-group-item">
                 <span class="badge">{{ $item['price']}}</span>
                 {{ $item['item']['name']}} | {{ $item['quantity']}} units
@@ -33,6 +33,7 @@
           <strong>Total Price: ${{ $order->cart->totalPrice }}</strong>
         </div>
       </div>
+      @endforeach
   </div>
 </div>
 @endsection
