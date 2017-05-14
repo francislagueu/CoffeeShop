@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cart;
 use App\Menu;
+use App\Order;
 use Session;
 use App\Http\Requests;
 use Stripe\Charge;
 use Stripe\Stripe;
+use Auth;
 
 class MenuController extends Controller
 {
@@ -151,12 +153,19 @@ class MenuController extends Controller
 
         Stripe::setApiKey('sk_test_woLLpl2OZLt8FHgmkJzEJPcV');
         try{
-            Charge::create(array(
+            $charge = Charge::create(array(
                 "amount"=>$cart->totalPrice * 100,
                 "currency"=>"usd",
                 "source"=>$request->input('stripeToken'),
                 "description"=>"Test Charge"
             ));
+            $order = new Order();
+            $order->cart = serialize($cart);
+            $order->address = $request->input('address');
+            $order->name = $request->input('name');
+            $order->payment_id = $charge->id;
+          
+            Auth::user()->orders()->save($order);
         }catch(\Exception $e){
             return redirect()->route('checkout')->with('error',$e->getMessage());
         }

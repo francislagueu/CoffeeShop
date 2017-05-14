@@ -11,7 +11,7 @@ class Menu extends Model
         'name', 'description', 'price', 'image', 'size','process'
     ];
 
-    public function order(){
-        $this->belongsTo(Order::class);
-    }
+    // public function order(){
+    //     $this->belongsTo(Order::class);
+    // }
 }
