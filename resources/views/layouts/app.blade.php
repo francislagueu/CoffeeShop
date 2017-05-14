@@ -51,8 +51,9 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{route('About.index')}}">About</a></li>
-                        <li><a href="{{route('Contact')}}">Contacts</a></li>
+                        <li><a href="{{route('About.index')}}"><i class="fa fa-address-card-o" aria-hidden="true"></i> About</a></li>
+                        <li><a href="{{route('Contact')}}"><i class="fa fa-comments" aria-hidden="true"></i> Contacts</a></li>
+                        <li><a href="{{route('shop.index')}}"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Shop</a></li>
                         <!-- Authentication Links -->
 
                         @if (Auth::guest())
@@ -62,11 +63,11 @@
                         @else
                             <li>
                                 <a href="{{route('menu.cart')}}">
-                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>Cart
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart
                                     <span class="badge">{{Session::has('cart')?Session::get('cart')->totalQty : ''}}</span>
                                 </a>
                             </li>
-                            <li><a href="{{ route('Profile.index')}}">Profile</a></li>
+                            <li><a href="{{ route('Profile.index')}}"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>

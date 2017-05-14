@@ -67,5 +67,5 @@
 @endsection
 @section('scripts')
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script type="text/javascript" src="{{URL::to('public/js/checkout.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/checkout.js')}}"></script>
 @endsection

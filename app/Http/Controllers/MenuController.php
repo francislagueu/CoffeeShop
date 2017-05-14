@@ -7,6 +7,8 @@ use App\Cart;
 use App\Menu;
 use Session;
 use App\Http\Requests;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class MenuController extends Controller
 {
@@ -125,6 +127,7 @@ class MenuController extends Controller
 
     public function display(){
         $menus = Menu::all();
+        
         return view('shop.index', compact('menus'));
     }
 
@@ -139,7 +142,27 @@ class MenuController extends Controller
         return view('shop.checkout', ['total'=>$total]);
     }
 
-    public function postCheckout(){
-        
+    public function postCheckout(Request $request){
+        if(!Session::has('cart')){
+            return redirect()->route('shop.cart');     
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        Stripe::setApiKey('sk_test_woLLpl2OZLt8FHgmkJzEJPcV');
+        try{
+            Charge::create(array(
+                "amount"=>$cart->totalPrice * 100,
+                "currency"=>"usd",
+                "source"=>$request->input('stripeToken'),
+                "description"=>"Test Charge"
+            ));
+        }catch(\Exception $e){
+            return redirect()->route('checkout')->with('error',$e->getMessage());
+        }
+
+        Session::forget('cart');
+        return redirect()->route('shop.index')->with('success', 'Your order have been successfully submitted!!!');
+
     }
 }
