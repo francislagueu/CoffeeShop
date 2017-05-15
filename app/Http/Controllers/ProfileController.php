@@ -41,6 +41,10 @@ class ProfileController extends Controller
         }
     }
 
+    public function edit(){
+        return view('Profile.edit');
+    }
+
     public function update(){
         $user = Auth::user();
         $user->name = request('name');
