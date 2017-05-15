@@ -160,7 +160,7 @@ class MenuController extends Controller
                 "description"=>"Test Charge"
             ));
             $order = new Order();
-            $order->cart = serialize($cart);
+            $order->cart = base64_encode(serialize($cart));
             $order->address = $request->input('address');
             $order->name = $request->input('name');
             $order->payment_id = $charge->id;

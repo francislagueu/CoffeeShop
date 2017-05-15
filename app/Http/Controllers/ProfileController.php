@@ -18,7 +18,7 @@ class ProfileController extends Controller
         $orders = $user->orders;
        
         $orders->transform(function($order, $key){
-            $order->cart = unserialize($order->cart);
+            $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
     	return view('Profile.index', ['user'=>$user, 'orders'=>$orders]);
