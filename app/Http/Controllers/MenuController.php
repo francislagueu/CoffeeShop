@@ -181,6 +181,6 @@ class MenuController extends Controller
             $order->cart = unserialize(base64_decode($order->cart));
             return $order;
         });
-        return view('order.index', compact('orders'));
+        return view('admin.order.index', compact('orders'));
     }
 }
