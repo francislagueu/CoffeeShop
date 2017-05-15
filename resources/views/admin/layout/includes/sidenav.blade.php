@@ -30,6 +30,9 @@
                     <i class="glyphicon glyphicon-list"></i> Orders
                     <span class="caret pull-right"></span>
                 </a>
+                <ul>
+                    <li><a href="{{route('orders')}}">orders</a></li>
+                </ul>
                 
             </li>
         </ul>

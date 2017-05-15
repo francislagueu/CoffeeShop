@@ -174,4 +174,13 @@ class MenuController extends Controller
         return redirect()->route('shop.index')->with('success', 'Your order have been successfully submitted!!!');
 
     }
+
+    public function getOrders(){
+        $orders = Order::all();
+         $orders->transform(function($order, $key){
+            $order->cart = unserialize(base64_decode($order->cart));
+            return $order;
+        });
+        return view('order.index', compact('orders'));
+    }
 }

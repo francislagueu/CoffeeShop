@@ -37,7 +37,7 @@ class ProfileController extends Controller
             $user = Auth::user();
             $user->profile_picture = $filename;
             $user->save();
-            return view('Profile.upload', array('user'=>Auth::user()));
+            return view('Profile.index', array('user'=>Auth::user()));
         }
     }
 

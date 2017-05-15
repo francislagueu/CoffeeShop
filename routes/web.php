@@ -42,6 +42,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth', 'admin']], function(){
 		Route::get('/dashboard', 'DashboardController@index')->name('admin.index');
 		Route::resource('menu', 'MenuController');
 		Route::resource('user', 'UserController');
+		Route::get('/orders', 'MenuController@getOrders')->name('orders');
 });
 Route::resource('About', 'AboutController');
 

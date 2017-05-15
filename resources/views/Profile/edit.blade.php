@@ -5,7 +5,7 @@
 <div class="col-md-6 col-md-offset-3">
  <form method="POST" action='/Profile'>
    {{ csrf_field() }}
-   <img src="/uploads/avatars/default-avatar.jpg{{ $user->avatar }}" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 25px;"><br />
+   <img src="/uploads/avatars/{{ Auth::user()->profile_picture }}" style="width: 150px; height: 150px; border-radius: 50%; margin-right: 25px;"><br />
    <div class="form-group">
    	<label for="name">Name:</label>
    	<input type="text" class="form-control" id="name" name="name" value="{{$user->name}}">
