@@ -18,7 +18,7 @@
             @foreach($menuChunk as $menu)
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src="{{url('images',$menu->image)}}" alt="..." class="img-responsive">
+                        <img src="{{url('images',$menu->image)}}" alt="No Image" class="img-responsive">
                         <div class="caption">
                             <h3>{{$menu->name}}</h3>
                             <p class="description">{{ $menu->description}}</p>
