@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="jumbotron">
-        <h2 style="color:white; font-size=90px; font-weight:bold;">Welcome To Arabica Coffee Shop</h2>
+        <h2 style="color:white; font-size=150px; font-weight:bold;">Welcome To Arabica Coffee Shop</h2>
     </div>
     <section id="showcase">
         <div class="container">
